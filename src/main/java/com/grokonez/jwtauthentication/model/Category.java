@@ -3,6 +3,7 @@ package com.grokonez.jwtauthentication.model;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+
 @Entity
 @Table(name = "category")
 public class Category implements Serializable {
@@ -10,13 +11,13 @@ public class Category implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Size(min=1, max =100)
+    @Size(min = 1, max = 100)
     String href;
 
-    @Size(min=1, max = 100)
+    @Size(min = 1, max = 100)
     String id_internal;
 
-    @Size(min=1, max =100)
+    @Size(min = 1, max = 100)
     String name;
 
     public Category() {

@@ -1,81 +1,78 @@
 package com.grokonez.jwtauthentication.model;
 
-import org.w3c.dom.stylesheets.LinkStyle;
-
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="album")
+@Table(name = "album")
 public class Album implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Size(min=1, max=100)
+    @Size(min = 1, max = 100)
     String album_type;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name="album_artist",
-            joinColumns = @JoinColumn(name = "artist_id",referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name="album_id",referencedColumnName = "id"))
+    @JoinTable(name = "album_artist",
+            joinColumns = @JoinColumn(name = "artist_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "album_id", referencedColumnName = "id"))
     List<Artist> artists;
 
-    @ElementCollection(targetClass=String.class)
+    @ElementCollection(targetClass = String.class)
     List<String> available_markets;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name="copyrights_album",
-            joinColumns = @JoinColumn(name = "copyright_id",referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name="album_id",referencedColumnName = "id"))
+    @JoinTable(name = "copyrights_album",
+            joinColumns = @JoinColumn(name = "copyright_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "album_id", referencedColumnName = "id"))
     List<Copyright> copyrights;
 
-    @Size(min=1, max=100)
+    @Size(min = 1, max = 100)
     String external_ids;
 
-    @Size(min=1, max=100)
+    @Size(min = 1, max = 100)
     String external_urls;
 
-    @ElementCollection(targetClass=String.class)
+    @ElementCollection(targetClass = String.class)
     List<String> genres;
 
-    @Size(min=1, max=100)
+    @Size(min = 1, max = 100)
     String href;
 
-    @Size(min=1, max=100)
+    @Size(min = 1, max = 100)
     String id_spotify;
 
-    @Size(min=1, max=100)
+    @Size(min = 1, max = 100)
     String label;
 
-    @Size(min=1, max=100)
+    @Size(min = 1, max = 100)
     String name;
 
     Integer popularity;
 
-    @Size(min=1, max=100)
+    @Size(min = 1, max = 100)
     String release_date;
 
-    @Size(min=1, max=100)
+    @Size(min = 1, max = 100)
     String release_date_precision;
 
     @ElementCollection
     List<Track> tracks;
 
-    @Size(min=1, max=100)
+    @Size(min = 1, max = 100)
     String type;
 
-    @Size(min=1, max=100)
+    @Size(min = 1, max = 100)
     String uri;
 
     public Album() {
     }
 
     public Album(Long id, String album_type, List<Artist> artists, List<String> available_markets,
-                 List<Copyright> copyrights, String external_ids, String external_urls, List<String> genres,String href,
+                 List<Copyright> copyrights, String external_ids, String external_urls, List<String> genres, String href,
                  String id_spotify, String label, String name, Integer popularity, String release_date, String release_date_precision,
                  List<Track> tracks, String type, String uri) {
         this.id = id;

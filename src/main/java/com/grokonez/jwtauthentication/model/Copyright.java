@@ -5,11 +5,11 @@ import javax.persistence.*;
 @Entity
 @Table(name = "copyright")
 public class Copyright {
+    String copyright;
+    String type;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    String copyright;
-    String type;
 
     public Copyright(Long id, String copyright, String type) {
         this.id = id;

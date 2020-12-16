@@ -3,7 +3,6 @@ package com.grokonez.jwtauthentication.model;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,51 +12,51 @@ public class Track implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Size(min=1, max = 100)
+    @Size(min = 1, max = 100)
     String album;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name="tracks_artists",
-            joinColumns = @JoinColumn(name = "track_id",referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name="artist_id",referencedColumnName = "id"))
+    @JoinTable(name = "tracks_artists",
+            joinColumns = @JoinColumn(name = "track_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "artist_id", referencedColumnName = "id"))
     List<Artist> artists;
 
-    @ElementCollection(targetClass=String.class)
+    @ElementCollection(targetClass = String.class)
     List<String> available_markets;
 
     Integer disc_number;
 
     Integer duration_ms;
 
-    @Size(min=1, max = 100)
+    @Size(min = 1, max = 100)
     Boolean explicit;
 
-    @ElementCollection(targetClass=String.class)
+    @ElementCollection(targetClass = String.class)
     List<String> external_ids;
 
-    @ElementCollection(targetClass=String.class)
+    @ElementCollection(targetClass = String.class)
     List<String> external_urls;
 
-    @Size(min=1, max = 100)
+    @Size(min = 1, max = 100)
     String href;
 
-    @Size(min=1, max = 100)
+    @Size(min = 1, max = 100)
     String id_internal;
 
     Boolean is_playable;
 
-    @Size(min=1, max = 100)
+    @Size(min = 1, max = 100)
     String name;
 
-    @Size(min=1, max = 100)
+    @Size(min = 1, max = 100)
     String preview_url;
 
     Integer track_number;
 
-    @Size(min=1, max = 100)
+    @Size(min = 1, max = 100)
     String type;
 
-    @Size(min=1, max = 100)
+    @Size(min = 1, max = 100)
     String uri;
 
     Boolean is_local;
@@ -66,7 +65,7 @@ public class Track implements Serializable {
     }
 
     public Track(Long id, String album, List<Artist> artists, List<String> available_markets,
-                 Integer disc_number,Integer duration_ms, Boolean explicit, List<String> external_ids,
+                 Integer disc_number, Integer duration_ms, Boolean explicit, List<String> external_ids,
                  List<String> external_urls, String href, String id_internal, Boolean is_playable, String name,
                  String preview_url, Integer track_number, String type, String uri, Boolean is_local) {
         this.id = id;

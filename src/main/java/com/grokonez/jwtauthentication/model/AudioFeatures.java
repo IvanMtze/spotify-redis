@@ -1,7 +1,6 @@
 package com.grokonez.jwtauthentication.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
@@ -14,7 +13,7 @@ public class AudioFeatures implements Serializable {
 
     Float acousticness;
 
-    @Size(min=1, max = 100)
+    @Size(min = 1, max = 100)
     String analysis_url;
 
     Float danceability;
@@ -23,7 +22,7 @@ public class AudioFeatures implements Serializable {
 
     Float energy;
 
-    @Size(min=1, max = 100)
+    @Size(min = 1, max = 100)
     String internal_id;
 
     Float instrulmentalness;
@@ -42,13 +41,13 @@ public class AudioFeatures implements Serializable {
 
     Integer time_signature;
 
-    @Size(min=1, max = 100)
+    @Size(min = 1, max = 100)
     String track_href;
 
-    @Size(min=1, max = 100)
+    @Size(min = 1, max = 100)
     String type;
 
-    @Size(min=1, max = 100)
+    @Size(min = 1, max = 100)
     String uri;
 
     Float valance;
@@ -56,7 +55,7 @@ public class AudioFeatures implements Serializable {
     public AudioFeatures() {
     }
 
-    public AudioFeatures(Long id, Float acousticness, String analysis_url, Float danceability, Integer duration_ms, Float energy, String internal_id, Float instrulmentalness, Integer key, Float liveness, Float loudness, Integer mode, Float speechiness, Float tempo, Integer time_signature, String track_href, String type, String uri,  Float valance) {
+    public AudioFeatures(Long id, Float acousticness, String analysis_url, Float danceability, Integer duration_ms, Float energy, String internal_id, Float instrulmentalness, Integer key, Float liveness, Float loudness, Integer mode, Float speechiness, Float tempo, Integer time_signature, String track_href, String type, String uri, Float valance) {
         this.id = id;
         this.acousticness = acousticness;
         this.analysis_url = analysis_url;
