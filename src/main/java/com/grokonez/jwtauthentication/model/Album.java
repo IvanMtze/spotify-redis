@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="album")
@@ -17,13 +18,20 @@ public class Album implements Serializable {
     @Size(min=1, max=100)
     String album_type;
 
-    @ElementCollection
-    @CollectionTable(name="artists")
-    ArrayList<Artist> artists;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name="album_artist",
+            joinColumns = @JoinColumn(name = "artist_id",referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name="album_id",referencedColumnName = "id"))
+    List<Artist> artists;
 
-    ArrayList<String> available_markets;
+    @ElementCollection(targetClass=String.class)
+    List<String> available_markets;
 
-    ArrayList<Copyright> copyrights;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name="copyrights_album",
+            joinColumns = @JoinColumn(name = "copyright_id",referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name="album_id",referencedColumnName = "id"))
+    List<Copyright> copyrights;
 
     @Size(min=1, max=100)
     String external_ids;
@@ -31,7 +39,8 @@ public class Album implements Serializable {
     @Size(min=1, max=100)
     String external_urls;
 
-    ArrayList<String> genres;
+    @ElementCollection(targetClass=String.class)
+    List<String> genres;
 
     @Size(min=1, max=100)
     String href;
@@ -54,7 +63,7 @@ public class Album implements Serializable {
     String release_date_precision;
 
     @ElementCollection
-    ArrayList<Track> tracks;
+    List<Track> tracks;
 
     @Size(min=1, max=100)
     String type;
@@ -65,10 +74,10 @@ public class Album implements Serializable {
     public Album() {
     }
 
-    public Album(Long id, String album_type, ArrayList<Artist> artists, ArrayList<String> available_markets,
-                 ArrayList<Copyright> copyrights, String external_ids, String external_urls, ArrayList<String> genres,String href,
+    public Album(Long id, String album_type, List<Artist> artists, List<String> available_markets,
+                 List<Copyright> copyrights, String external_ids, String external_urls, List<String> genres,String href,
                  String id_spotify, String label, String name, Integer popularity, String release_date, String release_date_precision,
-                 ArrayList<Track> tracks, String type, String uri) {
+                 List<Track> tracks, String type, String uri) {
         this.id = id;
         this.album_type = album_type;
         this.artists = artists;
@@ -105,27 +114,27 @@ public class Album implements Serializable {
         this.album_type = album_type;
     }
 
-    public ArrayList<Artist> getArtists() {
+    public List<Artist> getArtists() {
         return artists;
     }
 
-    public void setArtists(ArrayList<Artist> artists) {
+    public void setArtists(List<Artist> artists) {
         this.artists = artists;
     }
 
-    public ArrayList<String> getAvailable_markets() {
+    public List<String> getAvailable_markets() {
         return available_markets;
     }
 
-    public void setAvailable_markets(ArrayList<String> available_markets) {
+    public void setAvailable_markets(List<String> available_markets) {
         this.available_markets = available_markets;
     }
 
-    public ArrayList<Copyright> getCopyrights() {
+    public List<Copyright> getCopyrights() {
         return copyrights;
     }
 
-    public void setCopyrights(ArrayList<Copyright> copyrights) {
+    public void setCopyrights(List<Copyright> copyrights) {
         this.copyrights = copyrights;
     }
 
@@ -145,11 +154,11 @@ public class Album implements Serializable {
         this.external_urls = external_urls;
     }
 
-    public ArrayList<String> getGenres() {
+    public List<String> getGenres() {
         return genres;
     }
 
-    public void setGenres(ArrayList<String> genres) {
+    public void setGenres(List<String> genres) {
         this.genres = genres;
     }
 
@@ -209,11 +218,11 @@ public class Album implements Serializable {
         this.release_date_precision = release_date_precision;
     }
 
-    public ArrayList<Track> getTracks() {
+    public List<Track> getTracks() {
         return tracks;
     }
 
-    public void setTracks(ArrayList<Track> tracks) {
+    public void setTracks(List<Track> tracks) {
         this.tracks = tracks;
     }
 

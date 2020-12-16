@@ -23,14 +23,17 @@ public class Artist implements Serializable {
     @Size(min=1, max=100)
     String followers;
 
-    @ElementCollection
-    ArrayList<String> genres;
+    @ElementCollection(targetClass=String.class)
+    List<String> genres;
 
     @Size(min=1, max=100)
     String href;
 
     @Size(min=1, max=100)
     String name;
+
+    @ManyToMany(mappedBy = "artists")
+    List<Album> albums;
 
     Integer popularity;
     
@@ -43,8 +46,9 @@ public class Artist implements Serializable {
     public Artist(){}
     public Artist(
         String external_urls,
+        List<Album> albums,
         String followers,
-        ArrayList<String> genres,
+        List<String> genres,
         String href,
         String name,
         Integer popularity,
@@ -58,7 +62,16 @@ public class Artist implements Serializable {
         this.name = name;
         this.popularity = popularity;
         this.type = type;
+        this.albums=albums;
         this.uri = uri;
+    }
+
+    public List<Album> getAlbums() {
+        return albums;
+    }
+
+    public void setAlbums(List<Album> albums) {
+        this.albums = albums;
     }
 
     public void setExternal_urls(String external_urls) {
@@ -73,10 +86,10 @@ public class Artist implements Serializable {
     public String getFollowers() {
         return followers;
     }
-    public void setGenres(ArrayList<String> genres) {
+    public void setGenres(List<String> genres) {
         this.genres = genres;
     }
-    public ArrayList<String> getGenres() {
+    public List<String> getGenres() {
         return genres;
     }
     public void setHref(String href) {
