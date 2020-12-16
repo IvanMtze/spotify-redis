@@ -23,7 +23,7 @@ public class Album implements Serializable {
 
     ArrayList<String> available_markets;
 
-    ArrayList<String> copyrights;
+    ArrayList<Copyright> copyrights;
 
     @Size(min=1, max=100)
     String external_ids;
@@ -54,7 +54,7 @@ public class Album implements Serializable {
     String release_date_precision;
 
     @ElementCollection
-    ArrayList<String> tracks;
+    ArrayList<Track> tracks;
 
     @Size(min=1, max=100)
     String type;
@@ -65,7 +65,10 @@ public class Album implements Serializable {
     public Album() {
     }
 
-    public Album(Long id, String album_type, ArrayList<Artist> artists, ArrayList<String> available_markets, ArrayList<String> copyrights, String external_ids, String external_urls, ArrayList<String> genres,String href, String id_spotify, String label, String name, Integer popularity, String release_date, String release_date_precision, ArrayList<String> tracks, String type, String uri) {
+    public Album(Long id, String album_type, ArrayList<Artist> artists, ArrayList<String> available_markets,
+                 ArrayList<Copyright> copyrights, String external_ids, String external_urls, ArrayList<String> genres,String href,
+                 String id_spotify, String label, String name, Integer popularity, String release_date, String release_date_precision,
+                 ArrayList<Track> tracks, String type, String uri) {
         this.id = id;
         this.album_type = album_type;
         this.artists = artists;
@@ -118,11 +121,11 @@ public class Album implements Serializable {
         this.available_markets = available_markets;
     }
 
-    public ArrayList<String> getCopyrights() {
+    public ArrayList<Copyright> getCopyrights() {
         return copyrights;
     }
 
-    public void setCopyrights(ArrayList<String> copyrights) {
+    public void setCopyrights(ArrayList<Copyright> copyrights) {
         this.copyrights = copyrights;
     }
 
@@ -206,11 +209,11 @@ public class Album implements Serializable {
         this.release_date_precision = release_date_precision;
     }
 
-    public ArrayList<String> getTracks() {
+    public ArrayList<Track> getTracks() {
         return tracks;
     }
 
-    public void setTracks(ArrayList<String> tracks) {
+    public void setTracks(ArrayList<Track> tracks) {
         this.tracks = tracks;
     }
 

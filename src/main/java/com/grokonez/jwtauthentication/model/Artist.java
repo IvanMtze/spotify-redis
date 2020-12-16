@@ -32,7 +32,6 @@ public class Artist implements Serializable {
     @Size(min=1, max=100)
     String name;
 
-
     Integer popularity;
     
     @Size(min=1, max=100)

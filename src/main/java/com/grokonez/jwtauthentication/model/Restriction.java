@@ -3,21 +3,21 @@ package com.grokonez.jwtauthentication.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "copyright")
-public class Copyright {
+@Table(name = "restriction")
+public class Restriction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    String copyright;
     String type;
+    String reason;
 
-    public Copyright(Long id, String copyright, String type) {
+    public Restriction(Long id, String type, String reason) {
         this.id = id;
-        this.copyright = copyright;
         this.type = type;
+        this.reason = reason;
     }
 
-    public Copyright() {
+    public Restriction() {
     }
 
     public Long getId() {
@@ -28,19 +28,19 @@ public class Copyright {
         this.id = id;
     }
 
-    public String getCopyright() {
-        return copyright;
-    }
-
-    public void setCopyright(String copyright) {
-        this.copyright = copyright;
-    }
-
     public String getType() {
         return type;
     }
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
     }
 }

@@ -15,7 +15,7 @@ public class Track implements Serializable {
     String album;
 
     @ElementCollection
-    ArrayList<String> artists;
+    ArrayList<Artist> artists;
 
     @ElementCollection
     ArrayList<String> available_markets;
@@ -60,7 +60,10 @@ public class Track implements Serializable {
     public Track() {
     }
 
-    public Track(Long id, String album, ArrayList<String> artists, ArrayList<String> available_markets, Integer disc_number,Integer duration_ms, Boolean explicit, ArrayList<String> external_ids, ArrayList<String> external_urls, String href, String id_internal, Boolean is_playable, String name, String preview_url, Integer track_number, String type, String uri, Boolean is_local) {
+    public Track(Long id, String album, ArrayList<Artist> artists, ArrayList<String> available_markets,
+                 Integer disc_number,Integer duration_ms, Boolean explicit, ArrayList<String> external_ids,
+                 ArrayList<String> external_urls, String href, String id_internal, Boolean is_playable, String name,
+                 String preview_url, Integer track_number, String type, String uri, Boolean is_local) {
         this.id = id;
         this.album = album;
         this.artists = artists;
@@ -97,11 +100,11 @@ public class Track implements Serializable {
         this.album = album;
     }
 
-    public ArrayList<String> getArtists() {
+    public ArrayList<Artist> getArtists() {
         return artists;
     }
 
-    public void setArtists(ArrayList<String> artists) {
+    public void setArtists(ArrayList<Artist> artists) {
         this.artists = artists;
     }
 
