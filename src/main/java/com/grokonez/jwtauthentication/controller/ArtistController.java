@@ -1,6 +1,5 @@
 package com.grokonez.jwtauthentication.controller;
 
-import com.grokonez.jwtauthentication.model.Album;
 import com.grokonez.jwtauthentication.model.Artist;
 import com.grokonez.jwtauthentication.repository.ArtistRepository;
 import io.swagger.annotations.Api;
@@ -13,37 +12,39 @@ import java.util.Map;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@Api( tags = "artist")
+@Api(tags = "artist")
 @RequestMapping("/api/artist")
 public class ArtistController {
 
 
     @Autowired
-    private ArtistRepository artistRepository;
+    private final ArtistRepository artistRepository;
 
-    public ArtistController(ArtistRepository artistRepository){
+    public ArtistController(ArtistRepository artistRepository) {
         this.artistRepository = artistRepository;
     }
 
     @GetMapping("/")
-    @ApiOperation(value = "Count the number of entities associated with resource name. This operation does not requires any role." , authorizations={@Authorization(value = "apikey")})
-    public Map<Long, Artist> GetAll(){
+    @ApiOperation(value = "Count the number of entities associated with resource name. This operation does not requires any role.", authorizations = {@Authorization(value = "apikey")})
+    public Map<Long, Artist> GetAll() {
         return artistRepository.findAll();
     }
+
     @PostMapping("/")
-    public Artist add(@RequestBody Artist artist){
+    public Artist add(@RequestBody Artist artist) {
         artistRepository.save(artist);
         return artistRepository.findById(artist.getId());
     }
+
     @DeleteMapping("/{id}")
-    @ApiOperation(value = "Count the number of entities associated with resource name. This operation does not requires any role." , authorizations={@Authorization(value = "apikey")})
-    public Boolean delete(@PathVariable Long id){
+    @ApiOperation(value = "Count the number of entities associated with resource name. This operation does not requires any role.", authorizations = {@Authorization(value = "apikey")})
+    public Boolean delete(@PathVariable Long id) {
         return artistRepository.delete(id);
     }
 
     @GetMapping("/{id}")
-    @ApiOperation(value = "Count the number of entities associated with resource name. This operation does not requires any role." , authorizations={@Authorization(value = "apikey")})
-    public Artist getById(@RequestBody Long id){
+    @ApiOperation(value = "Count the number of entities associated with resource name. This operation does not requires any role.", authorizations = {@Authorization(value = "apikey")})
+    public Artist getById(@RequestBody Long id) {
         return artistRepository.findById(id);
     }
 

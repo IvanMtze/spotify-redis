@@ -3,7 +3,8 @@ package com.grokonez.jwtauthentication.model;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "track")
 public class Track implements Serializable {
@@ -11,48 +12,51 @@ public class Track implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Size(min=1, max = 100)
+    @Size(min = 1, max = 100)
     String album;
 
-    @ElementCollection
-    ArrayList<Artist> artists;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "tracks_artists",
+            joinColumns = @JoinColumn(name = "track_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "artist_id", referencedColumnName = "id"))
+    List<Artist> artists;
 
-    @ElementCollection
-    ArrayList<String> available_markets;
+    @ElementCollection(targetClass = String.class)
+    List<String> available_markets;
 
     Integer disc_number;
 
     Integer duration_ms;
 
-    @Size(min=1, max = 100)
+    @Size(min = 1, max = 100)
     Boolean explicit;
 
-    @ElementCollection
-    ArrayList<String> external_ids;
+    @ElementCollection(targetClass = String.class)
+    List<String> external_ids;
 
-    @ElementCollection
-    ArrayList<String> external_urls;
+    @ElementCollection(targetClass = String.class)
+    List<String> external_urls;
 
-    @Size(min=1, max = 100)
+    @Size(min = 1, max = 100)
     String href;
 
-    @Size(min=1, max = 100)
+    @Size(min = 1, max = 100)
     String id_internal;
 
     Boolean is_playable;
 
-    @Size(min=1, max = 100)
+    @Size(min = 1, max = 100)
     String name;
 
-    @Size(min=1, max = 100)
+    @Size(min = 1, max = 100)
     String preview_url;
 
     Integer track_number;
 
-    @Size(min=1, max = 100)
+    @Size(min = 1, max = 100)
     String type;
 
-    @Size(min=1, max = 100)
+    @Size(min = 1, max = 100)
     String uri;
 
     Boolean is_local;
@@ -60,9 +64,9 @@ public class Track implements Serializable {
     public Track() {
     }
 
-    public Track(Long id, String album, ArrayList<Artist> artists, ArrayList<String> available_markets,
-                 Integer disc_number,Integer duration_ms, Boolean explicit, ArrayList<String> external_ids,
-                 ArrayList<String> external_urls, String href, String id_internal, Boolean is_playable, String name,
+    public Track(Long id, String album, List<Artist> artists, List<String> available_markets,
+                 Integer disc_number, Integer duration_ms, Boolean explicit, List<String> external_ids,
+                 List<String> external_urls, String href, String id_internal, Boolean is_playable, String name,
                  String preview_url, Integer track_number, String type, String uri, Boolean is_local) {
         this.id = id;
         this.album = album;
@@ -100,19 +104,19 @@ public class Track implements Serializable {
         this.album = album;
     }
 
-    public ArrayList<Artist> getArtists() {
+    public List<Artist> getArtists() {
         return artists;
     }
 
-    public void setArtists(ArrayList<Artist> artists) {
+    public void setArtists(List<Artist> artists) {
         this.artists = artists;
     }
 
-    public ArrayList<String> getAvailable_markets() {
+    public List<String> getAvailable_markets() {
         return available_markets;
     }
 
-    public void setAvailable_markets(ArrayList<String> available_markets) {
+    public void setAvailable_markets(List<String> available_markets) {
         this.available_markets = available_markets;
     }
 
@@ -140,19 +144,19 @@ public class Track implements Serializable {
         this.explicit = explicit;
     }
 
-    public ArrayList<String> getExternal_ids() {
+    public List<String> getExternal_ids() {
         return external_ids;
     }
 
-    public void setExternal_ids(ArrayList<String> external_ids) {
+    public void setExternal_ids(List<String> external_ids) {
         this.external_ids = external_ids;
     }
 
-    public ArrayList<String> getExternal_urls() {
+    public List<String> getExternal_urls() {
         return external_urls;
     }
 
-    public void setExternal_urls(ArrayList<String> external_urls) {
+    public void setExternal_urls(List<String> external_urls) {
         this.external_urls = external_urls;
     }
 

@@ -5,11 +5,11 @@ import javax.persistence.*;
 @Entity
 @Table(name = "restriction")
 public class Restriction {
+    String type;
+    String reason;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    String type;
-    String reason;
 
     public Restriction(Long id, String type, String reason) {
         this.id = id;
