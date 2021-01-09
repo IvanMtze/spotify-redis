@@ -22,9 +22,6 @@ public class AudioFeatures implements Serializable {
 
     Float energy;
 
-    @Size(min = 1, max = 100)
-    String internal_id;
-
     Float instrulmentalness;
 
     Integer key;
@@ -55,14 +52,13 @@ public class AudioFeatures implements Serializable {
     public AudioFeatures() {
     }
 
-    public AudioFeatures(Long id, Float acousticness, String analysis_url, Float danceability, Integer duration_ms, Float energy, String internal_id, Float instrulmentalness, Integer key, Float liveness, Float loudness, Integer mode, Float speechiness, Float tempo, Integer time_signature, String track_href, String type, String uri, Float valance) {
+    public AudioFeatures(Long id, Float acousticness, String analysis_url, Float danceability, Integer duration_ms, Float energy, Float instrulmentalness, Integer key, Float liveness, Float loudness, Integer mode, Float speechiness, Float tempo, Integer time_signature, String track_href, String type, String uri, Float valance) {
         this.id = id;
         this.acousticness = acousticness;
         this.analysis_url = analysis_url;
         this.danceability = danceability;
         this.duration_ms = duration_ms;
         this.energy = energy;
-        this.internal_id = internal_id;
         this.instrulmentalness = instrulmentalness;
         this.key = key;
         this.liveness = liveness;
@@ -109,9 +105,7 @@ public class AudioFeatures implements Serializable {
         this.danceability = danceability;
     }
 
-    public Integer getDuration_ms() {
-        return duration_ms;
-    }
+    public Integer getDuration_ms() { return duration_ms; }
 
     public void setDuration_ms(Integer duration_ms) {
         this.duration_ms = duration_ms;
@@ -123,14 +117,6 @@ public class AudioFeatures implements Serializable {
 
     public void setEnergy(Float energy) {
         this.energy = energy;
-    }
-
-    public String getInternal_id() {
-        return internal_id;
-    }
-
-    public void setInternal_id(String internal_id) {
-        this.internal_id = internal_id;
     }
 
     public Float getInstrulmentalness() {
