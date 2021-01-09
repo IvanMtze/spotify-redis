@@ -1,6 +1,6 @@
 package com.grokonez.jwtauthentication;
 
-import com.grokonez.jwtauthentication.model.*;
+import com.grokonez.jwtauthentication.model.AudioFeatures;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -18,8 +18,8 @@ public class SpringBootJwtAuthenticationApplication {
     @Bean
     JedisConnectionFactory jedisConnectionFactory() {
         RedisStandaloneConfiguration redisStandaloneConfiguration =
-                new RedisStandaloneConfiguration("104.198.244.0", 6379);
-        //new RedisStandaloneConfiguration("0.0.0.0", 32768);
+               // new RedisStandaloneConfiguration("104.198.244.0", 6379);
+        new RedisStandaloneConfiguration("0.0.0.0", 32768);
 
         return new JedisConnectionFactory(redisStandaloneConfiguration);
     }
