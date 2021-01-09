@@ -6,12 +6,12 @@ import com.grokonez.jwtauthentication.model.AudioFeatures;
 import java.util.Map;
 
 public interface AudioFeaturesRepository {
-    void save(AudioFeatures playlist);
+    void save(AudioFeatures audioFeatures);
 
-    Map<Long, AudioFeatures> findAll();
+    Map<String, AudioFeatures> findAll();
 
-    AudioFeatures findById(Long id);
+    AudioFeatures findById(String uri_track);
 
-    Boolean delete(Long id);
+    Boolean delete(String uri_track);
 
 }

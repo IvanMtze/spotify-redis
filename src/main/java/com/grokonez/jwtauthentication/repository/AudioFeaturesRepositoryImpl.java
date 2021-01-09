@@ -9,11 +9,11 @@ import java.util.Map;
 
 @Repository
 public class AudioFeaturesRepositoryImpl implements AudioFeaturesRepository {
-    private final RedisTemplate<Long, AudioFeatures> redisTemplate;
+    private final RedisTemplate<String, AudioFeatures> redisTemplate;
 
     private final HashOperations hashOperations;
 
-    public AudioFeaturesRepositoryImpl(RedisTemplate<Long, AudioFeatures> redisTemplate) {
+    public AudioFeaturesRepositoryImpl(RedisTemplate<String, AudioFeatures> redisTemplate) {
         this.redisTemplate = redisTemplate;
         hashOperations = redisTemplate.opsForHash();
     }
@@ -21,23 +21,23 @@ public class AudioFeaturesRepositoryImpl implements AudioFeaturesRepository {
     @Override
     public void save(AudioFeatures audioFeatures) {
 
-        hashOperations.put("USER", audioFeatures.getId(), audioFeatures);
+        hashOperations.put("AUDIOFEATURES", audioFeatures.getUri_song(), audioFeatures);
     }
 
     @Override
-    public Map<Long, AudioFeatures> findAll() {
+    public Map<String, AudioFeatures> findAll() {
 
         return hashOperations.entries("AUDIOFEATURES");
     }
 
     @Override
-    public AudioFeatures findById(Long id) {
-        return (AudioFeatures) hashOperations.get("AUDIOFEATURES", id);
+    public AudioFeatures findById(String uri_track) {
+        return (AudioFeatures) hashOperations.get("AUDIOFEATURES", uri_track);
     }
 
     @Override
-    public Boolean delete(Long id) {
-        hashOperations.delete("AUDIOFEATURES", id);
+    public Boolean delete(String uri_track) {
+        hashOperations.delete("AUDIOFEATURES", uri_track);
         return true;
     }
 }
