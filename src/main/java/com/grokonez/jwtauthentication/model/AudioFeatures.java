@@ -1,7 +1,5 @@
 package com.grokonez.jwtauthentication.model;
 
-import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 public class AudioFeatures implements Serializable {

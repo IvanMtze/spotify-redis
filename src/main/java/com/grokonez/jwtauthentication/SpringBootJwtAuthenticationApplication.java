@@ -24,7 +24,6 @@ public class SpringBootJwtAuthenticationApplication {
         return new JedisConnectionFactory(redisStandaloneConfiguration);
     }
 
-
     @Bean
     RedisTemplate<String, AudioFeatures> redisAudioFeaturesTemplate() {
         RedisTemplate<String, AudioFeatures> redisTemplate = new RedisTemplate<>();
