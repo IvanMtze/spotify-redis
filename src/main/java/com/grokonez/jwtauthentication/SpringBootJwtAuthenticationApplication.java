@@ -24,52 +24,12 @@ public class SpringBootJwtAuthenticationApplication {
         return new JedisConnectionFactory(redisStandaloneConfiguration);
     }
 
-    @Bean
-    RedisTemplate<Long, Playlist> redisPlaylistTemplate() {
-        RedisTemplate<Long, Playlist> redisTemplate = new RedisTemplate<>();
-        redisTemplate.setConnectionFactory(jedisConnectionFactory());
-        return redisTemplate;
-    }
-    @Bean
-    RedisTemplate<Long, Album> redisAlbumTemplate() {
-        RedisTemplate<Long, Album> redisTemplate = new RedisTemplate<>();
-        redisTemplate.setConnectionFactory(jedisConnectionFactory());
-        return redisTemplate;
-    }
-    @Bean
-    RedisTemplate<Long, AudioFeatures> redisAudioFeaturesTemplate() {
-        RedisTemplate<Long, AudioFeatures> redisTemplate = new RedisTemplate<>();
-        redisTemplate.setConnectionFactory(jedisConnectionFactory());
-        return redisTemplate;
-    }
-    @Bean
-    RedisTemplate<Long, Track> redisTrackTemplate() {
-        RedisTemplate<Long, Track> redisTemplate = new RedisTemplate<>();
-        redisTemplate.setConnectionFactory(jedisConnectionFactory());
-        return redisTemplate;
-    }
-    @Bean
-    RedisTemplate<Long, Category> redisCategoryTemplate() {
-        RedisTemplate<Long, Category> redisTemplate = new RedisTemplate<>();
-        redisTemplate.setConnectionFactory(jedisConnectionFactory());
-        return redisTemplate;
-    }
-    @Bean
-    RedisTemplate<Long, Playlist> redisTemplate() {
-        RedisTemplate<Long, Playlist> redisTemplate = new RedisTemplate<>();
-        redisTemplate.setConnectionFactory(jedisConnectionFactory());
-        return redisTemplate;
-    }
-    @Bean
-    RedisTemplate<Long, Artist> redisArtistTemplate() {
-        RedisTemplate<Long, Artist> redisTemplate = new RedisTemplate<>();
-        redisTemplate.setConnectionFactory(jedisConnectionFactory());
-        return redisTemplate;
-    }
 
-
-
-
-
+    @Bean
+    RedisTemplate<String, AudioFeatures> redisAudioFeaturesTemplate() {
+        RedisTemplate<String, AudioFeatures> redisTemplate = new RedisTemplate<>();
+        redisTemplate.setConnectionFactory(jedisConnectionFactory());
+        return redisTemplate;
+    }
 
 }

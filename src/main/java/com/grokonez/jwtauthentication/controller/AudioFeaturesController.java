@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @Api(tags = "audiofeatures")
 @RequestMapping("/api/audiofeatures")
@@ -25,7 +24,7 @@ public class AudioFeaturesController {
 
     @GetMapping("/")
     @ApiOperation(value = "Count the number of entities associated with resource name. This operation does not requires any role.", authorizations = {@Authorization(value = "apikey")})
-    public Map<Long, AudioFeatures> GetAll() {
+    public Map<String, AudioFeatures> GetAll() {
         return audioFeaturesRepository.findAll();
     }
 
@@ -33,19 +32,19 @@ public class AudioFeaturesController {
     @ApiOperation(value = "Count the number of entities associated with resource name. This operation does not requires any role.", authorizations = {@Authorization(value = "apikey")})
     public AudioFeatures add(@RequestBody AudioFeatures audioFeatures) {
         audioFeaturesRepository.save(audioFeatures);
-        return audioFeaturesRepository.findById(audioFeatures.getId());
+        return audioFeaturesRepository.findById(audioFeatures.getUri_song());
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{uri_track}")
     @ApiOperation(value = "Count the number of entities associated with resource name. This operation does not requires any role.", authorizations = {@Authorization(value = "apikey")})
-    public Boolean delete(@PathVariable Long id) {
-        return audioFeaturesRepository.delete(id);
+    public Boolean delete(@PathVariable String uri_track) {
+        return audioFeaturesRepository.delete(uri_track);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{uri_track}")
     @ApiOperation(value = "Count the number of entities associated with resource name. This operation does not requires any role.", authorizations = {@Authorization(value = "apikey")})
-    public AudioFeatures getById(@PathVariable Long id) {
-        return audioFeaturesRepository.findById(id);
+    public AudioFeatures getById(@PathVariable String uri_track) {
+        return audioFeaturesRepository.findById(uri_track);
     }
 
 }
