@@ -3,18 +3,18 @@ package com.grokonez.jwtauthentication.model;
 import java.io.Serializable;
 
 public class AudioFeatures implements Serializable {
-    Float acousticness;
-    Float danceability;
-    Float energy;
-    Float instrumentalness;
-    Float liveness;
-    Float valence;
-    Float loudness;
-    Float speechiness;
-    Float tempo;
-    Float key;
-    Float time_signature;
-    String uri_song;
+    private Float acousticness;
+    private Float danceability;
+    private Float energy;
+    private Float instrumentalness;
+    private Float liveness;
+    private Float valence;
+    private Float loudness;
+    private Float speechiness;
+    private Float tempo;
+    private Float key;
+    private Float time_signature;
+    private String uri_song;
 
     public AudioFeatures(Float acousticness, Float danceability, Float energy, Float instrumentalness, Float liveness, Float valence, Float loudness, Float speechiness, Float tempo, Float key, Float time_signature, String uri_song) {
         this.acousticness = acousticness;

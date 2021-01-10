@@ -1,6 +1,8 @@
 package com.grokonez.jwtauthentication;
 
 import com.grokonez.jwtauthentication.model.AudioFeatures;
+import com.grokonez.jwtauthentication.model.Track;
+import com.grokonez.jwtauthentication.model.TrackMood;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -27,6 +29,18 @@ public class SpringBootJwtAuthenticationApplication {
     @Bean
     RedisTemplate<String, AudioFeatures> redisAudioFeaturesTemplate() {
         RedisTemplate<String, AudioFeatures> redisTemplate = new RedisTemplate<>();
+        redisTemplate.setConnectionFactory(jedisConnectionFactory());
+        return redisTemplate;
+    }
+    @Bean
+    RedisTemplate<String, Track> redisTrackTemplate() {
+        RedisTemplate<String, Track> redisTemplate = new RedisTemplate<>();
+        redisTemplate.setConnectionFactory(jedisConnectionFactory());
+        return redisTemplate;
+    }
+    @Bean
+    RedisTemplate<String, TrackMood> redisTrackMoodTemplate() {
+        RedisTemplate<String, TrackMood> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(jedisConnectionFactory());
         return redisTemplate;
     }

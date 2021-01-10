@@ -10,23 +10,17 @@ import java.util.Map;
 @Repository
 public class AudioFeaturesRepositoryImpl implements AudioFeaturesRepository {
     private final RedisTemplate<String, AudioFeatures> redisTemplate;
-
     private final HashOperations hashOperations;
-
     public AudioFeaturesRepositoryImpl(RedisTemplate<String, AudioFeatures> redisTemplate) {
         this.redisTemplate = redisTemplate;
         hashOperations = redisTemplate.opsForHash();
     }
-
     @Override
     public void save(AudioFeatures audioFeatures) {
-
         hashOperations.put("AUDIOFEATURES", audioFeatures.getUri_song(), audioFeatures);
     }
-
     @Override
     public Map<String, AudioFeatures> findAll() {
-
         return hashOperations.entries("AUDIOFEATURES");
     }
 
