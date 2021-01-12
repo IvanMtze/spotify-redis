@@ -21,7 +21,7 @@ public class SpringBootJwtAuthenticationApplication {
     JedisConnectionFactory jedisConnectionFactory() {
         RedisStandaloneConfiguration redisStandaloneConfiguration =
                // new RedisStandaloneConfiguration("104.198.244.0", 6379);
-        new RedisStandaloneConfiguration("0.0.0.0", 32768);
+        new RedisStandaloneConfiguration("redis", 6379);
 
         return new JedisConnectionFactory(redisStandaloneConfiguration);
     }
